@@ -22,6 +22,6 @@ RUN rm -f /lib/systemd/system/multi-user.target.wants/*;\
 
 VOLUME [ "/sys/fs/cgroup", "/run", "/run/lock", "/tmp" ]
 
-# STOPSIGNAL SIGRTMIN+3
+STOPSIGNAL SIGRTMIN+3
 
 CMD ["/sbin/init"]
