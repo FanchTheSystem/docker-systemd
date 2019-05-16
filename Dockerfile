@@ -21,6 +21,6 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
 
 VOLUME [ "/sys/fs/cgroup", "/run", "/run/lock", "/tmp" ]
 
-STOPSIGNAL SIGRTMIN+3
+# STOPSIGNAL SIGRTMIN+3
 
-CMD ["sh", "-c", "while true; do sleep 10000; done"]
+CMD ["sh", "-c", "/sbin/init"]
