@@ -9,6 +9,8 @@ Docker Image with Systemd
 platforms:
   - name: ${OS_NAME}-instance
     image: fanchthesystem/${OS_NAME}-with-systemd:latest
+    override_command: false
+    privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     tmpfs:
@@ -27,4 +29,5 @@ docker exec -it ${OS_NAME}-with-systemd systemctl status
 
 ### Note:
 
-OS_NAME can be 'ubuntu', 'centos' or 'debian'
+**OS_NAME** can be 'ubuntu', 'centos' or 'debian'
+**--privileged** may or may not be needed ...
