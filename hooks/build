@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker build --build-arg FROM_IMAGE=$(basename $DOCKERFILE_PATH | cut -f2 -d'-') -f Dockerfile -t $IMAGE_NAME .
