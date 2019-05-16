@@ -23,4 +23,4 @@ VOLUME [ "/sys/fs/cgroup", "/run", "/run/lock", "/tmp" ]
 
 # STOPSIGNAL SIGRTMIN+3
 
-CMD ["sh", "-c", "/sbin/init"]
+CMD ["/sbin/init"]
