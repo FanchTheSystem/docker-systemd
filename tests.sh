@@ -2,7 +2,7 @@
 
 set -e
 
-OS_LIST="ubuntu debian centos fedore"
+OS_LIST="ubuntu debian centos fedora"
 
 for OS_NAME in $OS_LIST
 do
