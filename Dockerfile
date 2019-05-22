@@ -2,8 +2,8 @@ ARG FROM_IMAGE=ubuntu
 FROM ${FROM_IMAGE}
 
 RUN if [ $(command -v apt-get) ]; then apt-get -y -o Acquire::GzipIndexes=false  update && apt-get install -y python sudo bash ca-certificates gnupg gcc systemd systemd-sysv dbus rsyslog && apt-get clean; \
-    elif [ $(command -v dnf) ]; then dnf makecache && dnf --assumeyes install python sudo python-devel python*-dnf bash gnupg gcc systemd dbus rsyslog && dnf clean all; \
-    elif [ $(command -v yum) ]; then yum makecache fast && yum install -y python sudo yum-plugin-ovl bash gnupg gcc systemd dbus rsyslog && sed -i 's/plugins=0/plugins=1/g' /etc/yum.conf && yum clean all; \
+    elif [ $(command -v dnf) ]; then dnf makecache && dnf --assumeyes install python sudo python-devel python*-dnf bash gnupg gcc systemd systemd-sysv dbus rsyslog && dnf clean all; \
+    elif [ $(command -v yum) ]; then yum makecache fast && yum install -y python sudo yum-plugin-ovl bash gnupg gcc systemd systemd-sysv dbus rsyslog systemd-networkd && sed -i 's/plugins=0/plugins=1/g' /etc/yum.conf && yum clean all; \
     fi
 
 ENV container docker
