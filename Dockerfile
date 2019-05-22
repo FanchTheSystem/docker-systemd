@@ -14,7 +14,8 @@ RUN rm -f /lib/systemd/system/multi-user.target.wants/*;\
     rm -f /etc/systemd/system/*.wants/*;
 
 # to have a network-online.target
-RUN systemctl enable systemd-network
+RUN systemctl enable systemd-networkd
+
 RUN systemctl enable rsyslog
 
 
