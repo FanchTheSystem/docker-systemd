@@ -11,7 +11,7 @@ done
 
 for OS_NAME in $OS_LIST
 do
-    docker run --privileged --name ${OS_NAME}-with-systemd -d -v /sys/fs/cgroup:/sys/fs/cgroup:ro fanchthesystem/${OS_NAME}-with-systemd
+    docker run --privileged --name ${OS_NAME}-with-systemd -d -v /sys/fs/cgroup:/sys/fs/cgroup:ro ${OS_NAME}-with-systemd
 done
 
 for OS_NAME in $OS_LIST
