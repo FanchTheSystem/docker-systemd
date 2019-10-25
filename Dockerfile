@@ -1,9 +1,9 @@
 ARG FROM_IMAGE=ubuntu
 FROM ${FROM_IMAGE}
 
-RUN if [ $(command -v apt-get) ]; then apt-get -y -o Acquire::GzipIndexes=false  update && apt-get install -y python sudo apt-utils bash ca-certificates gnupg gcc systemd systemd-sysv dbus rsyslog && apt-get upgrade -y && apt-get clean; \
-    elif [ $(command -v dnf) ]; then dnf makecache && dnf --assumeyes install python sudo dnf-utils bash gnupg gcc systemd systemd-sysv dbus rsyslog && dnf upgrade -y && dnf clean all; \
-    elif [ $(command -v yum) ]; then yum makecache fast && yum install -y python sudo yum-utils bash gnupg gcc systemd systemd-sysv dbus rsyslog systemd-networkd && sed -i 's/plugins=0/plugins=1/g' /etc/yum.conf && yum upgrade -y && yum clean all; \
+RUN if [ $(command -v apt-get) ]; then apt-get -y -o Acquire::GzipIndexes=false  update && apt-get install -y python python3 sudo apt-utils bash ca-certificates gnupg gcc systemd systemd-sysv dbus rsyslog && apt-get upgrade -y && apt-get clean; \
+    elif [ $(command -v dnf) ]; then dnf makecache && dnf --assumeyes install python2 python36 sudo dnf-utils bash gnupg gcc systemd systemd-sysv dbus rsyslog && dnf upgrade -y && dnf clean all &&  alternatives --auto python; \
+    elif [ $(command -v yum) ]; then yum makecache fast && yum install -y python python3 sudo yum-utils bash gnupg gcc systemd systemd-sysv dbus rsyslog systemd-networkd && sed -i 's/plugins=0/plugins=1/g' /etc/yum.conf && yum upgrade -y && yum clean all; \
     fi
 
 ENV container docker
