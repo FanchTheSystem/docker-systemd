@@ -19,7 +19,6 @@ sleep 30
 
 for OS_NAME in $OS_LIST
 do
-    docker exec -it ${OS_NAME}-with-systemd python --version
     docker exec -it ${OS_NAME}-with-systemd systemctl status
 done
 
