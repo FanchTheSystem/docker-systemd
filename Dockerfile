@@ -1,9 +1,11 @@
 ARG FROM_IMAGE=ubuntu
 FROM ${FROM_IMAGE}
 
+##
 # debian and ubuntu use apt
 # last centos and fedora use dnf & yum
 # centos7 use only yum
+##
 
 RUN if [ $(command -v apt-get) ]; then apt-get -y -o Acquire::GzipIndexes=false update && apt-get upgrade -y && apt-get install -y python python3 sudo apt-utils bash ca-certificates gnupg gcc systemd systemd-sysv dbus rsyslog iproute2 net-tools traceroute iputils-ping dnsutils emacs-nox && apt-get clean; \
     elif [ $(command -v dnf) ]; then dnf upgrade -y && dnf --assumeyes install python2 python36 sudo dnf-utils bash gnupg gcc systemd systemd-sysv dbus rsyslog iproute net-tools traceroute iputils bind-utils emacs-nox && dnf clean all; \
